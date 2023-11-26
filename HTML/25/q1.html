@@ -1,0 +1,72 @@
+Html file
+<!DOCTYPE html>
+<html>
+<body>
+<p>Choose A Function:</p>
+<form action="string.php" method="POST">
+<input type="text" name="string1"><br>
+<input type="radio" id="length" name="string" value="1">
+<label for="length">Length</label><br>
+<input type="radio" id="vowels" name="string" value="2">
+<label for="vowels">vowels</label><br>
+<input type="radio" id="lowercase" name="string" value="3">
+<label for="lowercase">Lowercase</label><br>
+<input type="radio" id="padding" name="string" value="4">
+<label for="padding">Padding</label><br>
+<input type="radio" id="whitespace" name="string" value="5">
+<label for="whitespace">Whitespace</label><br>
+<input type="radio" id="reverse" name="string" value="6">
+<label for="whitespace">Reverse</label><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+
+
+Php file
+<?php
+$ch = $_POST['string'];
+if($ch==1)
+{
+$str = $_POST['string1'];
+echo "Total String Length : ". strlen($str);
+}
+else if($ch==2)
+{
+$string = strtolower($_POST['string1']);
+$vowels = array('a','e','i','o','u');
+$len = strlen($string);
+$num = 0;
+for($i=0; $i<$len; $i++)
+{
+if(in_array($string[$i], $vowels))
+{
+$num++;
+}
+}
+echo "Number of vowels : ".$num;
+}
+else if($ch==3)
+{
+$str = $_POST['string1'];
+$resStr = strtolower($str);
+print_r($resStr);}
+else if($ch==4)
+{
+$str = $_POST['string1'];
+echo str_pad($str,20,"*",STR_PAD_BOTH);
+}
+else if($ch==5)
+{
+$str = $_POST['string1'];
+$str = str_replace(' ', '', $str);
+echo $str;
+}
+else if($ch==6)
+{
+$str=$_POST['string1'];
+echo "Reverse String of $str is:".strrev($str);
+}
+?>
+
